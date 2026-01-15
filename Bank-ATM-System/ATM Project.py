@@ -1,19 +1,20 @@
-# Developer name : S.J.J and C.S.M
+# Project Name : Bank ATM System
+# Console-based Python Project
 
 import time
 
 PASSWORD_FILE = "confirm_pass.txt"
 
 # Login Page
-print("\n\t\t\t...... SJ Bank Login Page ......")
+print("\n\t\t\t...... Bank ATM System Login ......")
 print("\n.... Insert your card in ATM machine ....\n")
 time.sleep(2)
 
 name = input("Enter your name : ")
 mobile_no = int(input("Enter your mobile number : "))
-balance = int(input("Enter your balance : "))
+balance = int(input("Enter your account balance : "))
 
-print("\n\t\t\tWELCOME to SJ & CM Bank")
+print("\n\t\t\tWELCOME TO BANK ATM SYSTEM")
 
 password = input("\nEnter your password : ")
 
@@ -37,7 +38,7 @@ Enter 5 for Exit
         if choice == 1:
             amount = int(input("Enter amount to credit : "))
             balance += amount
-            print(f"\nDear {name}, Rs.{amount} credited.")
+            print(f"\nDear {name}, Rs.{amount} credited successfully.")
             print(f"Available Balance : Rs.{balance}")
 
         # Debit
@@ -45,14 +46,14 @@ Enter 5 for Exit
             amount = int(input("Enter amount to debit : "))
             if amount <= balance:
                 balance -= amount
-                print(f"\nDear {name}, Rs.{amount} debited.")
+                print(f"\nDear {name}, Rs.{amount} debited successfully.")
                 print(f"Remaining Balance : Rs.{balance}")
             else:
                 print("\nOOPS! Insufficient Balance")
 
         # Balance Enquiry
         elif choice == 3:
-            print(f"\nDear {name}, Available Balance : Rs.{balance}")
+            print(f"\nDear {name}, Your Available Balance is Rs.{balance}")
 
         # Change Password
         elif choice == 4:
@@ -69,11 +70,11 @@ Enter 5 for Exit
 
         # Exit
         elif choice == 5:
-            print("\nThank you for using SJ Bank ATM")
+            print("\nThank you for using Bank ATM System")
             break
 
         else:
-            print("\nInvalid choice!")
+            print("\nInvalid choice! Please try again.")
 
 else:
     print("\nOOPS! Invalid Password")

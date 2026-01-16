@@ -36,8 +36,8 @@ This project uses **two MySQL database files**:
 python khata_book.py
 CREATE DATABASE khata_book;
 
-mysql -u root -p khata_book < khata_book_users.sql
-mysql -u root -p khata_book < khata_book_contacts.sql
+- `mysql -u root -p khata_book ` → khata_book_users.sql
+- `mysql -u root -p khata_book ` →khata_book_contacts.sql
 📌 Import both files into MySQL before running the project.
 
 ---

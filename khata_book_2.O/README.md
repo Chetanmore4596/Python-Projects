@@ -55,3 +55,7 @@ cd Khata-Book-2.0
 
 # Run the application
 python khata_book.py
+CREATE DATABASE khata_book;
+
+mysql -u root -p khata_book < khata_book_users.sql
+mysql -u root -p khata_book < khata_book_contacts.sql

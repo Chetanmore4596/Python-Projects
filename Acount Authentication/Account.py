@@ -1,178 +1,172 @@
-import mysql.connector                                       #Devloped By Sj AND CM
+import mysql.connector   # Developed By CM
 
-def login(my_cur):
-    print("....Enter mobile no for Sign in....\n")
-    u_mobile=int(input("Enter your mobile no : "))
-    u_password=input("Enter your password : ")
-    query='SELECT * FROM users where mobile=%s and password=%s'
-    values=(u_mobile,u_password)
-    my_cur.execute(query,values)
-    my_cur.fetchall()
-    count=my_cur.rowcount
-    if count==0:
-        print("!!..Wrong Mobile no OR password..!!")
-    else:
-        print("....Succesfull Login....")
-        print("\n1.press 1 for display Account details")
-        print("2.press 2 for delete Account")
-        print("3.press 3 for update Account details")
-        print("4.Exit")
-        ch=int(input("Enter the choice : "))
-        if ch==1:
-            u_mobile=int(input("Enter the mobile Number : "))
-            u_password=input("Enter your password : ")
-            query='SELECT * FROM users where mobile=%s and password=%s'
-            values=(u_mobile,u_password)
-            my_cur.execute(query,values)
-            for r in my_cur.fetchall():
-                print("................\nYour Account Details\n................")
-                print("Accountent id : ", r[0])
-                print("Accountent Name :", r[1])
-                print("Accountent address : ", r[2])
-                print("Accountent email : ", r[3])
-                print("Accountent  mobile no: ", r[4])
-                print("Accountent  mobile no Current password is : ", r[5])
-            
-            print("\nYour Accounts Succesfully display..!!")
-        elif ch==2:
-            u_mobile=int(input("Enter your mobile no : "))
-            u_password=input("Enter your password : ")
-            query='SELECT * FROM users where mobile=%s and password=%s'
-            values=(u_mobile,u_password)
-            my_cur.execute(query,values)
-            my_cur.fetchall()
-            count=my_cur.rowcount
-            if count==1:
-                print("\n....Re-enter mobile no and password....")
-                u_mobile=int(input("Enter your mobile no : "))
-                u_password=input("Enter your password : ")
-                sql = 'delete from users where mobile=%s and password=%s'
-                values=(u_mobile,u_password)
-                my_cur.execute(sql,values) 
-                my_con.commit()
-                print("\n",my_cur.rowcount,"Account are deleted") 
-            else:
-                print("Enter Valid Account..!!")
 
-        elif ch==3:
-            u_mobile=int(input("Enter your mobile no : "))
-            u_password=input("Enter your password : ")
-            query='SELECT * FROM users where mobile=%s and password=%s'
-            values=(u_mobile,u_password)
-            my_cur.execute(query,values)
-            my_cur.fetchall()
-            count=my_cur.rowcount
-            if count==1:
-                print("..........UPDATE..........")
-                print("press 1 to update name")
-                print("press 2 to update address")
-                print("press 3 to update mobile no")
-                print("press 4 to update password no")
-                print("press 5 to Exit")
-                print(".........................")
-                c=int(input("Enter the choice what operation you perform to update : "))
-                if c==1:
-                    name=input("Enter new name : ")
-                    mob=int(input("Ente mobile no : "))
-                    sql = 'update users set name=%s where mobile=%s'
-                    values=(name,mob)
-                    my_cur.execute(sql)
-                    my_con.commit()
-                    print("\n!!..Name is Succesfully updated..!!")
-                
-                elif c==2:
-                    address=int(input("Enter new address : "))
-                    mob=int(input("Ente mobile no : "))
-                    sql = 'update users set age=%s where mobile=%s'
-                    values=(address,mob)
-                    my_cur.execute(sql,values)
-                    my_con.commit()
-                    print("!!..address is Succesfully updated..!!")
-                elif c==3:
-                    email=int(input("Enter new email : "))
-                    mob=int(input("Ente mobile no : "))
-                    sql = 'update users set email=%s where mobile=%s'
-                    values=(email,mob)
-                    my_cur.execute(sql,values)
-                    my_con.commit()
-                    print("!!..email is Succesfully updated..!!")
-                elif c==4:
-                    passw=input("Enter new password : ")
-                    mob=int(input("Ente mobile no : "))
-                    sql = 'update users set password=%s where mobile=%s'
-                    values=(passw,mob)
-                    my_cur.execute(sql,values)
-                    my_con.commit()
-                    print("!!..password is Succesfully updated..!!")   
-                
-            else:  
-                exit()
-        
-def register(my_con,my_cur):
-    try:
-        u_mobile=int(input("Enter the mobile Number : "))
-        query='SELECT * FROM users where mobile=%s'
-        Values=[u_mobile]
-        my_cur.execute(query,Values)
-        my_cur.fetchall()
-        count=my_cur.rowcount
-        if count==1:
-            print("!!..Your Account is Alredy exist..!!")
-        else:
-            print("....Enter details....")
-            u_id=int(input("Please enter your id : "))
-            u_name=input("Please enter your name : ")
-            u_address=input("Please enter your address  :")
-            u_email=input("Please enter your email : ")
-            u_mobile=int(input("Please enter your  mobile : "))
-            u_password=input("Please enter your password : ")
-            gen=input("Enter your gendar(sir,mam,other) : ")
-            if gen=="sir":
-                sql='insert into users values(%s,%s,%s,%s,%s,%s)'
-                Values=(u_id,u_name,u_address,u_email,u_mobile,u_password)
-                my_cur.execute(sql,Values)
-                my_con.commit()
-                print("Congratulation !",gen,"your Amazon Account has been Succesfully Created..!!")
-            elif gen=="mam":
-                sql='insert into users values(%s,%s,%s,%s,%s,%s)'
-                Values=(u_id,u_name,u_address,u_email,u_mobile,u_password)
-                my_cur.execute(sql,Values)
-                my_con.commit()
-                print(gen,"your Account is Succesfully Registor..!!")
-            elif gen=="other":
-                sql='insert into users values(%s,%s,%s,%s,%s,%s)'
-                Values=(u_id,u_name,u_address,u_email,u_mobile,u_password)
-                my_cur.execute(sql,Values)
-                my_con.commit()
-                print(gen,"your Account is Succesfully Registor..!!")
-            else:  
-                exit()
-    except mysql.connector.Error as e:
-        print(e)
-try:
-    #DataBase connectivity
-    my_con=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="Chetan~45",
-    database="login_registration"
-    )
-    my_cur=my_con.cursor()
-    #choices are Display
+# ---------------- LOGIN FUNCTION ----------------
+def login(my_cur, my_con):
+    print("\n.... Enter mobile number for Sign In ....\n")
+
+    u_mobile = int(input("Enter your mobile number : "))
+    u_password = input("Enter your password : ")
+
+    query = "SELECT * FROM users WHERE mobile=%s AND password=%s"
+    values = (u_mobile, u_password)
+
+    my_cur.execute(query, values)
+    records = my_cur.fetchall()
+
+    if my_cur.rowcount == 0:
+        print("!! Wrong mobile number OR password !!")
+        return
+
+    print(".... Successful Login ....")
+
     while True:
-        print("\n***********WELCOME TO AMAZON***********\n")
-        print("PRESS 1 for Sign in")
-        print("PRESS 2 for Sign up")
-        print("PRESS 3 for Exit\n")
-        ch=int(input("Enter the choice : "))
-        if ch==1:
-            login(my_cur)
-        elif ch==2:
-            register(my_con,my_cur)
+        print("\n1. Display Account Details")
+        print("2. Delete Account")
+        print("3. Update Account Details")
+        print("4. Exit")
+
+        ch = int(input("Enter your choice : "))
+
+        # -------- DISPLAY ACCOUNT --------
+        if ch == 1:
+            my_cur.execute(query, values)
+            for r in my_cur.fetchall():
+                print("\n******** Account Details ********")
+                print("ID       :", r[0])
+                print("Name     :", r[1])
+                print("Address  :", r[2])
+                print("Email    :", r[3])
+                print("Mobile   :", r[4])
+                print("Password :", r[5])
+
+            print("\nAccount details displayed successfully!")
+
+        # -------- DELETE ACCOUNT --------
+        elif ch == 2:
+            sql = "DELETE FROM users WHERE mobile=%s AND password=%s"
+            my_cur.execute(sql, values)
+            my_con.commit()
+
+            if my_cur.rowcount == 1:
+                print("Account deleted successfully!")
+                break
+            else:
+                print("Invalid account details!")
+
+        # -------- UPDATE ACCOUNT --------
+        elif ch == 3:
+            print("\n******** UPDATE MENU ********")
+            print("1. Update Name")
+            print("2. Update Address")
+            print("3. Update Email")
+            print("4. Update Password")
+            print("5. Exit")
+
+            c = int(input("Enter your choice : "))
+
+            if c == 1:
+                name = input("Enter new name : ")
+                sql = "UPDATE users SET name=%s WHERE mobile=%s"
+                my_cur.execute(sql, (name, u_mobile))
+
+            elif c == 2:
+                address = input("Enter new address : ")
+                sql = "UPDATE users SET address=%s WHERE mobile=%s"
+                my_cur.execute(sql, (address, u_mobile))
+
+            elif c == 3:
+                email = input("Enter new email : ")
+                sql = "UPDATE users SET email=%s WHERE mobile=%s"
+                my_cur.execute(sql, (email, u_mobile))
+
+            elif c == 4:
+                password = input("Enter new password : ")
+                sql = "UPDATE users SET password=%s WHERE mobile=%s"
+                my_cur.execute(sql, (password, u_mobile))
+
+            elif c == 5:
+                break
+
+            else:
+                print("Invalid choice!")
+
+            my_con.commit()
+            print("Account updated successfully!")
+
+        # -------- EXIT --------
+        elif ch == 4:
+            break
+
         else:
-            print("\n*******THANKS*******\n")
-            exit()
-   
+            print("Invalid choice!")
+
+
+# ---------------- REGISTER FUNCTION ----------------
+def register(my_con, my_cur):
+    try:
+        u_mobile = int(input("Enter mobile number : "))
+
+        my_cur.execute("SELECT * FROM users WHERE mobile=%s", (u_mobile,))
+        my_cur.fetchall()
+
+        if my_cur.rowcount == 1:
+            print("Account already exists!")
+            return
+
+        print("\n.... Enter Registration Details ....")
+
+        u_id = int(input("Enter ID : "))
+        u_name = input("Enter name : ")
+        u_address = input("Enter address : ")
+        u_email = input("Enter email : ")
+        u_password = input("Enter password : ")
+        gen = input("Enter gender (sir/mam/other) : ")
+
+        sql = "INSERT INTO users VALUES (%s,%s,%s,%s,%s,%s)"
+        values = (u_id, u_name, u_address, u_email, u_mobile, u_password)
+
+        my_cur.execute(sql, values)
+        my_con.commit()
+
+        print(f"Congratulations {gen}! Your Amazon account has been created successfully!")
+
+    except mysql.connector.Error as e:
+        print("Database Error:", e)
+
+
+# ---------------- MAIN PROGRAM ----------------
+try:
+    my_con = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="Chetan~45",
+        database="login_registration"
+    )
+
+    my_cur = my_con.cursor()
+
+    while True:
+        print("\n*********** WELCOME TO AMAZON ***********\n")
+        print("1. Sign In")
+        print("2. Sign Up")
+        print("3. Exit")
+
+        ch = int(input("Enter your choice : "))
+
+        if ch == 1:
+            login(my_cur, my_con)
+
+        elif ch == 2:
+            register(my_con, my_cur)
+
+        elif ch == 3:
+            print("\n******* THANK YOU *******\n")
+            break
+
+        else:
+            print("Invalid choice!")
+
 except mysql.connector.Error as e:
-    print(e)
-    
+    print("Database connection failed!")
+    print("Error:", e)

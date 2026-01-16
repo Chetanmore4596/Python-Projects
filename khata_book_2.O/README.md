@@ -38,7 +38,7 @@ CREATE DATABASE khata_book;
 
 - `mysql -u root -p khata_book ` → khata_book_users.sql
 - `mysql -u root -p khata_book ` →khata_book_contacts.sql
-- 
+  
 📌 Import both files into MySQL before running the project.
 
 ---

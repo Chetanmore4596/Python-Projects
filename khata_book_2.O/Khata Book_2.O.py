@@ -1,5 +1,5 @@
 # Contact Book Management System (Khata Book 2.O)
-# Developers : Sahil Jadhav & Chetan More
+# Developers : Chetan More
 
 import mysql.connector as mc
 
@@ -191,3 +191,4 @@ try:
 
 except mc.Error as e:
     print("Database error:", e)
+

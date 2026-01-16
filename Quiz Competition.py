@@ -1,4 +1,4 @@
-#Developed by S.J.Jadhav & C.S.More
+#Developed by Chetan More
 # Quiz Competition
 
 #correct answers list
@@ -217,5 +217,6 @@ instruction()
 ready()
 
 print("\n*****THANK-YOU*****")
+
 
 

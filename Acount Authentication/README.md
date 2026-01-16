@@ -1,4 +1,4 @@
-# 🛒 Acount Authenticatio Login & Registration System (Python + MySQL)
+# 🔐 Acount Authenticatio Login & Registration System (Python + MySQL)
 
 A **console-based Amazon-style Login & Registration System** built using **Python and MySQL**.  
 This project allows users to **sign up, sign in, view account details, update profile information, and delete accounts** securely using a database.

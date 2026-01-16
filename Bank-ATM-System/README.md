@@ -37,7 +37,7 @@ Check Python version:
 python --version
 
 # 1️⃣ Clone the repository
-git clone https://github.com/your-username/Python-Projects.git
+git clone https://github.com/Chetanmore4596/Python-Projects.git
 
 # 2️⃣ Navigate to project folder
 cd Python-Projects/Bank-ATM-System

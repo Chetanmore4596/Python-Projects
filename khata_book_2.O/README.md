@@ -31,8 +31,13 @@ Khata Book 2.O allows users to **create accounts, manage contacts, update profil
 This project uses **two MySQL database files**:
 
 - `khata_book_users.sql` → Stores user account details  
-- `khata_book_contacts.sql` → Stores contact details  
+- `khata_book_contacts.sql` → Stores contact details
+  
+python khata_book.py
+CREATE DATABASE khata_book;
 
+mysql -u root -p khata_book < khata_book_users.sql
+mysql -u root -p khata_book < khata_book_contacts.sql
 📌 Import both files into MySQL before running the project.
 
 ---
@@ -54,8 +59,3 @@ git clone https://github.com/Chetanmore4596/Khata-Book-2.0.git
 cd Khata-Book-2.0
 
 # Run the application
-python khata_book.py
-CREATE DATABASE khata_book;
-
-mysql -u root -p khata_book < khata_book_users.sql
-mysql -u root -p khata_book < khata_book_contacts.sql
